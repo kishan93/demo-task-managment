@@ -1,8 +1,8 @@
 <template>
-  <AppLayout title="Manage Project">
+  <AppLayout title="Manage Tasks">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Create Project
+        Create Task
       </h2>
     </template>
 
@@ -16,9 +16,9 @@
               <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="project-name">
-                    Project Name
+                    Task Title
                   </label>
-                  <input v-model="form.name"
+                  <input v-model="form.title"
                          class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                          id="project-name" type="text" required>
                 </div>
@@ -26,12 +26,12 @@
 
               <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">
-                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="project-color">
-                    Project Color Hex
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="project-name">
+                    Task Body
                   </label>
-                  <input v-model="form.color"
+                  <textarea v-model="form.body"
                          class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                         id="project-color" type="text" required>
+                            id="project-name" type="text" required></textarea>
                 </div>
               </div>
 
@@ -60,24 +60,24 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
-  project: {
+  task: {
     type: Object,
     default: () => ({
-      name: '',
-      color: '777',
+      title: '',
+      body: '',
     }),
   },
 })
 
-const form = useForm(props.project)
+const form = useForm(props.task)
 
 const onSubmit = () => {
-  if (props.project.id) {
-    form.put(route('projects.update', props.project.id))
+  if (props.task.id) {
+    form.put(route('tasks.update', props.task.id))
     return
   }
 
-  form.post(route('projects.store'))
+  form.post(route('tasks.store'))
 }
 
 </script>

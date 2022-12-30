@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 
 /**
- * Trait BelongsToStore
+ * Trait BelongsToUser
  * @package App\Models\Traits
  */
 trait BelongsToUser

@@ -36,6 +36,10 @@ const navLinks = [
     text: 'Projects',
     route: 'projects.index',
   },
+  {
+    text: 'Tasks',
+    route: 'tasks.index',
+  },
 ];
 
 </script>

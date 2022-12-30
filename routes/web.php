@@ -34,7 +34,12 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    //project
+    // Project
     Route::resource('projects', \App\Http\Controllers\ProjectController::class);
+    Route::post('projects/{project}', [\App\Http\Controllers\ProjectController::class, 'select'])->name('projects.select');
+
+    // Tasks
+    Route::resource('tasks', \App\Http\Controllers\TaskController::class)
+        ->middleware(\App\Http\Middleware\CheckProjectIdInSession::class);
 
 });
