@@ -26,6 +26,18 @@ const switchToTeam = (team) => {
 const logout = () => {
     Inertia.post(route('logout'));
 };
+
+const navLinks = [
+  {
+    text: 'Dashboard',
+    route: 'dashboard',
+  },
+  {
+    text: 'Projects',
+    route: 'projects.index',
+  },
+];
+
 </script>
 
 <template>
@@ -49,9 +61,11 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                              <template v-for="(navLink, index) in navLinks" :key="index">
+                                <NavLink :href="route(navLink.route)" :active="route().current(navLink.route)">
+                                  {{ navLink.text}}
                                 </NavLink>
+                              </template>
                             </div>
                         </div>
 
@@ -208,9 +222,11 @@ const logout = () => {
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                      <template v-for="(navLink, index) in navLinks" :key="index">
+                        <ResponsiveNavLink :href="route(navLink.route)" :active="route().current(navLink.route)">
+                          {{ navLink.text }}
                         </ResponsiveNavLink>
+                      </template>
                     </div>
 
                     <!-- Responsive Settings Options -->
