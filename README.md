@@ -18,6 +18,12 @@
 - Nodejs >= 16
 - MySQL / SQLite
 
+## install
+- install composer dependencies
+    ```shell
+    composer install
+    ```
+
 ## Env 
 - copy `.env.example` to `.env`
 - set values in `.env`
