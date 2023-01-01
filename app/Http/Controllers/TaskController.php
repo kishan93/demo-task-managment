@@ -45,7 +45,7 @@ class TaskController extends Controller
     public function update(Request $request, Task $task)
     {
         $task->update($request->all());
-        if ($request->except('application/json')) {
+        if ($request->expectsJson()) {
             return $task->refresh();
         }
         return redirect()->back()->with('alertSuccess', 'Task updated.');
