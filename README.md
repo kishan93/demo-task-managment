@@ -10,3 +10,39 @@
 - Tasks should be saved to a mysql table.
 - BONUS POINT: add project functionality to the tasks.
   - User should be able to select a project from a dropdown and only view tasks associated with that project.
+
+# Setup
+
+## Requirements
+- PHP 8.x
+- Nodejs >= 16
+- MySQL / SQLite
+
+## Env 
+- copy `.env.example` to `.env`
+- set values in `.env`
+- generate key
+    ```shell
+    php artisan key:generate
+    ```
+
+## Database
+- create database
+- set database config in `.env`
+
+## Frontend Assets
+- install node dependencies
+    ```shell
+    npm install
+    ```
+- compile assets
+    ```shell
+    npm run build
+    ```
+
+## Dev server
+- start dev server
+    ```shell
+    php artisan serve
+    ```
+
