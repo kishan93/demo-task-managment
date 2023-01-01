@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -18,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('body')->nullable();
             $table->string('status')->nullable();
-            $table->integer('priority')->default(0);
+            $table->float('priority')->default(0);
             $table->foreignId('project_id')
                 ->references('id')
                 ->on('projects')

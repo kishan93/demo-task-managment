@@ -10,7 +10,10 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::query()
+            ->orderBy('priority')
+            ->get();
+
         return Inertia::render('Task/TaskIndex', compact('tasks'));
     }
 
@@ -21,13 +24,17 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        Task::create($request->all());
+        $data = array_merge([
+            'priority' => Task::nextId(),
+        ], $request->all());
+
+        Task::create($data);
         return redirect()->route('tasks.index')->with('alertSuccess', 'Task created.');
     }
 
     public function show(Task $task)
     {
-        //
+        return Inertia::render('Task/TaskView', compact('task'));
     }
 
     public function edit(Task $task)
@@ -38,7 +45,10 @@ class TaskController extends Controller
     public function update(Request $request, Task $task)
     {
         $task->update($request->all());
-        return redirect()->route('tasks.index')->with('alertSuccess', 'Task updated.');
+        if ($request->except('application/json')) {
+            return $task->refresh();
+        }
+        return redirect()->back()->with('alertSuccess', 'Task updated.');
     }
 
     public function destroy(Task $task)

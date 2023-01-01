@@ -35,6 +35,9 @@
                           Body
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Status
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                           Created
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -47,7 +50,7 @@
                         <tr>
                           <td
                             class="px-6 py-4 text-center whitespace-nowrap text-sm font-medium text-gray-900 bg-gray-200"
-                            colspan="5">No Tasks found
+                            colspan="6">No Tasks found
                           </td>
                         </tr>
                       </template>
@@ -62,6 +65,9 @@
                         </td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                           {{ task.created_date }}
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap capitalize">
+                          {{ task.status ? task.status : 'pending' }}
                         </td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap space-x-2">
                           <InertiaLink :href="route('tasks.edit', task.id)"

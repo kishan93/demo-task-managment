@@ -28,4 +28,9 @@ class Task extends Model
     {
         return Attribute::get(fn() => $this->created_at->format('d/m/Y'));
     }
+
+    public static function nextId()
+    {
+        return static::max('id') +1;
+    }
 }
