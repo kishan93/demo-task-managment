@@ -18,6 +18,31 @@
 - Nodejs >= 16
 - MySQL / SQLite
 
+## Env 
+- copy `.env.example` to `.env`
+- set values in `.env`
+- generate key
+    ```shell
+    php artisan key:generate
+    ```
+
 ## Database
 - create database
-- copy `.env.example` to `.env`
+- set database config in `.env`
+
+## Frontend Assets
+- install node dependencies
+    ```shell
+    npm install
+    ```
+- compile assets
+    ```shell
+    npm run build
+    ```
+
+## Dev server
+- start dev server
+    ```shell
+    php artisan serve
+    ```
+
