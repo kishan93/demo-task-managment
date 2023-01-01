@@ -14,10 +14,6 @@
         <p class="rounded-full max-w-max px-3 w-auto font-mono border border-red-500 text-gray-900">
           {{ task.created_date }}
         </p>
-
-        <p class="rounded-full max-w-max px-3 w-auto font-mono border border-red-500 text-gray-900">
-          {{ task.priority }}
-        </p>
       </div>
       <div class="mx-1 w-1/2">
         <p class="rounded-full px-2 text-center  border text-gray-900 border-green-500 capitalize">{{ taskStatus }}</p>
